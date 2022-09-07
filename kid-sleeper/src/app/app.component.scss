@@ -1,0 +1,48 @@
+.enclosing {
+    height: 100vh;
+    width : 100vw;
+}
+
+.selected-background-image {
+    height     : 90vh;
+    margin-left: 5vw;
+    margin-top : 5vh;
+    width      : 90vw;
+    position   : absolute;
+    z-index    : 111;
+    top        : 0;
+    left       : 0;
+}
+
+.controls {
+    position: absolute;
+    z-index : 9999999;
+    top     : 0;
+    left    : 0;
+}
+
+.progress {
+    position   : fixed;
+    z-index    : 9999999;
+    width      : 80vw;
+    margin-left: 5vw;
+    margin-top : 5vh;
+    width      : 90vw;
+
+    &.green {
+        background-color: green;
+    }
+
+    &.yellow {
+        background-color: yellow;
+    }
+
+    &.orange {
+        background-color: orange;
+    }
+
+    &.red {
+        background-color: red;
+    }
+
+}

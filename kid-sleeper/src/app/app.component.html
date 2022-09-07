@@ -1,0 +1,16 @@
+<div class="enclosing">
+  <div class="controls">
+    <button (click)="subtractTime()">-</button>
+    {{totalMinutes}}
+    <button (click)="addTime()">+</button>
+    <button (click)="startTimer()">START</button>
+    <button (click)="stopTimer()">STOP</button>
+    
+    {{remainingSeconds / 60}}
+  </div>
+  
+<div class="progress green" [style.height]="calculateHeight()"></div>
+<div class="background-image">
+  <img class="selected-background-image" [src]="selectedBackgroundImage">
+</div>
+</div>
