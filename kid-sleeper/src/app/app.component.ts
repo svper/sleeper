@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { interval, Observable, Subscription, timer } from 'rxjs';
+import NoSleep from 'nosleep.js';
 
 @Component({
   selector: 'app-root',
@@ -12,25 +13,41 @@ export class AppComponent {
   selectedBackgroundImage = this.possibleImages[0];
   totalMinutes = 20;
   totalSeconds = this.totalMinutes * 60;
-  remainingSeconds = 0;
+  remainingSeconds = this.totalMinutes * 60;
   timeIncrements = 5;
 
   timerSub: Subscription = new Subscription();
+
+  timerInterval:number = 1000; //1000 for true seconds, something else for testing
+
+  timerIsRunning = false;
+
+  noSleep:NoSleep= new NoSleep();
 
   constructor() {
 
   }
 
   startTimer = () => {
-    const source = interval(50);
-    //output: 0
-
+    const source = interval(this.timerInterval);
+    this.totalSeconds = this.totalMinutes * 60;
     this.remainingSeconds = this.totalMinutes * 60;
     this.timerSub = source.subscribe(val => this.tick(val));
+    this.timerIsRunning = true;
+    this.noSleep.enable();
+  }
+
+  continueTimer = () => {
+    const source = interval(this.timerInterval);
+    this.timerSub = source.subscribe(val => this.tick(val));
+    this.timerIsRunning = true;
+    this.noSleep.enable();
   }
 
   stopTimer = () => {
     this.timerSub.unsubscribe();
+    this.timerIsRunning = false;
+    this.noSleep.disable();
   }
 
   tick = (val: any) => {
@@ -38,7 +55,7 @@ export class AppComponent {
     if (this.remainingSeconds > 0) {
       this.remainingSeconds -= 1;
     } else {
-      //play sound
+      this.playAudio();
       this.stopTimer();
     }
 
@@ -55,6 +72,12 @@ export class AppComponent {
   calculateHeight = () => {
     console.log('total '+ this.totalSeconds + ' - remaining ' + this.remainingSeconds);
     return (90 * (this.remainingSeconds / this.totalSeconds )) + 'vh';
+  }
+
+  playAudio(){
+    let audio = new Audio('../assets/Pup_Bedtime.mp3');;
+    audio.load();
+    audio.play();
   }
 
 }

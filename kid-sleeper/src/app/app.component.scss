@@ -1,6 +1,17 @@
+button{
+    padding: .75rem;
+    margin-right: 1rem;
+}
+
 .enclosing {
     height: 100vh;
     width : 100vw;
+}
+.totaltimepick{
+    margin-right: 1rem;
+    font-size: 2rem;
+    line-height: 2rem;
+    vertical-align: middle;
 }
 
 .selected-background-image {
@@ -19,6 +30,8 @@
     z-index : 9999999;
     top     : 0;
     left    : 0;
+    text-align: center;
+    width: 100vw;
 }
 
 .progress {
@@ -43,6 +56,10 @@
 
     &.red {
         background-color: red;
+    }
+
+    &.pink {
+        background-color: pink;
     }
 
 }

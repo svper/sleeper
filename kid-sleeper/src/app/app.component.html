@@ -1,15 +1,17 @@
 <div class="enclosing">
   <div class="controls">
     <button (click)="subtractTime()">-</button>
-    {{totalMinutes}}
+    <label class="totaltimepick">{{totalMinutes}}</label>
     <button (click)="addTime()">+</button>
-    <button (click)="startTimer()">START</button>
-    <button (click)="stopTimer()">STOP</button>
+    <button (click)="startTimer()" *ngIf="!timerIsRunning">START</button>
+    <button (click)="stopTimer()" *ngIf="!!timerIsRunning">STOP</button>
+    <button (click)="continueTimer()" *ngIf="!timerIsRunning">CONTINUE</button>
+    <label>{{remainingSeconds / 60 | number:'2.0-0'}} mins left</label>
     
-    {{remainingSeconds / 60}}
+    
   </div>
   
-<div class="progress green" [style.height]="calculateHeight()"></div>
+<div class="progress pink" [style.height]="calculateHeight()"></div>
 <div class="background-image">
   <img class="selected-background-image" [src]="selectedBackgroundImage">
 </div>
