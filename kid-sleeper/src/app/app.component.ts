@@ -18,11 +18,11 @@ export class AppComponent {
 
   timerSub: Subscription = new Subscription();
 
-  timerInterval:number = 1000; //1000 for true seconds, something else for testing
+  timerInterval: number = 1000; //1000 for true seconds, something else for testing
 
   timerIsRunning = false;
 
-  noSleep:NoSleep= new NoSleep();
+  noSleep: NoSleep = new NoSleep();
 
   constructor() {
 
@@ -51,7 +51,7 @@ export class AppComponent {
   }
 
   tick = (val: any) => {
-    console.log('tick'+val);
+    console.log('tick' + val);
     if (this.remainingSeconds > 0) {
       this.remainingSeconds -= 1;
     } else {
@@ -66,15 +66,19 @@ export class AppComponent {
   }
 
   subtractTime = () => {
-    this.totalMinutes -= this.timeIncrements;
+    if (this.totalMinutes < 10) {
+      this.totalMinutes -= 1;
+    } else {
+      this.totalMinutes -= this.timeIncrements;
+    }
   }
 
   calculateHeight = () => {
-    console.log('total '+ this.totalSeconds + ' - remaining ' + this.remainingSeconds);
-    return (90 * (this.remainingSeconds / this.totalSeconds )) + 'vh';
+    console.log('total ' + this.totalSeconds + ' - remaining ' + this.remainingSeconds);
+    return (90 * (this.remainingSeconds / this.totalSeconds)) + 'vh';
   }
 
-  playAudio(){
+  playAudio() {
     let audio = new Audio('../assets/Pup_Bedtime.mp3');;
     audio.load();
     audio.play();

@@ -1,6 +1,6 @@
 <div class="enclosing">
   <div class="controls">
-    <button (click)="subtractTime()">-</button>
+    <button class="vdg-btn" (click)="subtractTime()">-</button>
     <label class="totaltimepick">{{totalMinutes}}</label>
     <button (click)="addTime()">+</button>
     <button (click)="startTimer()" *ngIf="!timerIsRunning">START</button>
@@ -11,7 +11,7 @@
     
   </div>
   
-<div class="progress pink" [style.height]="calculateHeight()"></div>
+<div class="progress rainbow" [style.height]="calculateHeight()"></div>
 <div class="background-image">
   <img class="selected-background-image" [src]="selectedBackgroundImage">
 </div>
