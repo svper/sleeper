@@ -34,6 +34,19 @@ button{
     width: 100vw;
 }
 
+.side-controls{
+    position: absolute;
+    z-index : 9999999;
+    top     : 0;
+    right    : 30px;
+    text-align: center;
+
+    input{
+        height: 2rem;
+        width: 2rem;
+    }
+}
+
 .progress {
     position   : fixed;
     z-index    : 9999999;

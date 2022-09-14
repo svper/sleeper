@@ -5,10 +5,11 @@
     <button (click)="addTime()">+</button>
     <button (click)="startTimer()" *ngIf="!timerIsRunning">START</button>
     <button (click)="stopTimer()" *ngIf="!!timerIsRunning">STOP</button>
-    <button (click)="continueTimer()" *ngIf="!timerIsRunning">CONTINUE</button>
+    <button (click)="continueTimer()" *ngIf="!timerIsRunning && remainingSeconds > 1">CONTINUE</button>
     <label>{{remainingSeconds / 60 | number:'2.0-0'}} mins left</label>
-    
-    
+  </div>
+  <div class="side-controls">
+    <input [(ngModel)]="selectedBackgroundImageNumber" width="100" required> image nmbr (0-4)
   </div>
   
 <div class="progress rainbow" [style.height]="calculateHeight()"></div>
