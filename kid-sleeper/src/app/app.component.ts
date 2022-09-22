@@ -88,11 +88,16 @@ export class AppComponent {
 
   calculateHeight = () => {
     console.log('total ' + this.totalSeconds + ' - remaining ' + this.remainingSeconds);
-    return (90 * (this.remainingSeconds / this.totalSeconds)) + 'vh';
+    return (95 * (this.remainingSeconds / this.totalSeconds)) + 'vh';
   }
 
   playAudio() {
     this.audioFinish.play();
+  }
+
+
+  floor = (value: any) => {
+   return  Math.floor(value);
   }
 
 }

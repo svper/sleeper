@@ -1,19 +1,19 @@
 <div class="enclosing">
   <div class="controls">
-    <button class="vdg-btn" (click)="subtractTime()">-</button>
-    <label class="totaltimepick">{{totalMinutes}}</label>
-    <button (click)="addTime()">+</button>
-    <button (click)="startTimer()" *ngIf="!timerIsRunning">START</button>
-    <button (click)="stopTimer()" *ngIf="!!timerIsRunning">STOP</button>
-    <button (click)="continueTimer()" *ngIf="!timerIsRunning && remainingSeconds > 1">CONTINUE</button>
-    <label>{{remainingSeconds / 60 | number:'2.0-0'}} mins left</label>
+    <button class="button button-highlight" (click)="subtractTime()" *ngIf="!timerIsRunning"><i class="fa fa-minus"></i></button>
+    <div class="totaltimepick" *ngIf="!timerIsRunning">{{totalMinutes}}</div>
+    <button class="button button-highlight" (click)="addTime()" *ngIf="!timerIsRunning"><i class="fa fa-plus"></i></button>
+    <button class="button button-highlight" (click)="startTimer()" *ngIf="!timerIsRunning">{{totalSeconds == remainingSeconds?'START': 'RESTART'}}</button>
+    <button class="button button-highlight" (click)="stopTimer()" *ngIf="!!timerIsRunning">STOP</button>
+    <button class="button button-highlight" (click)="continueTimer()" *ngIf="!timerIsRunning && remainingSeconds > 1 && totalSeconds !== remainingSeconds">CONTINUE</button>
+    <div class="time-remaining">{{floor(remainingSeconds / 60) | number:'2.0-0'}}:{{remainingSeconds % 60 | number:'2.0-0'}} left</div>
   </div>
   <div class="side-controls">
     <input [(ngModel)]="selectedBackgroundImageNumber" width="100" required> image nmbr (0-4)
   </div>
-  
-<div class="progress rainbow" [style.height]="calculateHeight()"></div>
-<div class="background-image">
-  <img class="selected-background-image" [src]="selectedBackgroundImage">
-</div>
+
+  <div class="progress rainbow" [style.height]="calculateHeight()"></div>
+  <div class="background-image">
+    <img class="selected-background-image" [src]="selectedBackgroundImage">
+  </div>
 </div>
